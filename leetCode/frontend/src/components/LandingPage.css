@@ -1,0 +1,27 @@
+/* LandingPage Specific Styles */
+.landing-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.landing-header {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #16a34a;
+}
+
+.landing-slogan {
+  font-size: 1.25rem;
+  margin-top: 0.5rem;
+  color: #047857;
+}
+
+.landing-button-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}

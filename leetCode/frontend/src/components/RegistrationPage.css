@@ -1,0 +1,39 @@
+/* RegistrationPage Specific Styles */
+.registration-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.registration-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.registration-form input,
+.registration-form select {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+}
+
+.registration-form button {
+  background-color: #16a34a;
+  color: #fff;
+  padding: 1rem;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+.registration-form button:hover {
+  background-color: #15803d;
+}
+
+.registration-form select {
+  padding: 0.75rem;
+}
