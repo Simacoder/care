@@ -1,6 +1,8 @@
 import React from 'react';
+import supabase from '../config/supabaseClient';
 
 const LandingPage = () => {
+  console.log(supabase);
   return (
     <div className="bg-sky-500 min-h-screen">
       <header className="bg-green-600 p-5">

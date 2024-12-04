@@ -1,5 +1,15 @@
-import { createClient } from '@supabase/supabase-js';
+// config.js
 
-const supabase = createClient('your-supabase-url', 'your-supabase-api-key');
+require('dotenv').config(); // Ensure dotenv is loaded to access .env file variables
 
-export default supabase;
+const config = {
+  supabase: {
+    url: process.env.SUPABASE_URL, // Your Supabase URL from .env
+    key: process.env.SUPABASE_KEY, // Your Supabase API Key from .env
+  },
+  server: {
+    port: process.env.PORT || 5000, // Default port if none is provided in .env
+  },
+};
+
+module.exports = config;

@@ -1,29 +1,33 @@
-import supabase from '../config';
+// controllers/authController.js
+import User from '../models/userModel.js';
 
-const registerUser = async (req, res) => {
-  const { fullName, email, password, phoneNumber } = req.body;
+const authController = {
+  async register(req, res) {
+    const { fullName, email, password, phoneNumber, gender, emergencyContact } = req.body;
 
-  const { data, error } = await supabase.auth.signUp({
-    email,
-    password,
-  });
+    try {
+      const user = await User.createUser({ fullName, email, password, phoneNumber, gender, emergencyContact });
+      res.status(200).json({ message: 'Registration successful!', user });
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  },
 
-  if (error) {
-    return res.status(400).json({ error: error.message });
-  }
+  async login(req, res) {
+    const { email, password } = req.body;
 
-  // Store additional user info (Full name, phone number)
-  const { error: userError } = await supabase
-    .from('users')
-    .insert([
-      { full_name: fullName, email, phone_number: phoneNumber },
-    ]);
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
 
-  if (userError) {
-    return res.status(400).json({ error: userError.message });
-  }
+      if (error) {
+        throw new Error(error.message);
+      }
 
-  res.status(200).json({ message: 'User registered successfully' });
+      res.status(200).json({ message: 'Login successful!', user: data.user });
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  },
 };
 
-export { registerUser };
+export default authController;
